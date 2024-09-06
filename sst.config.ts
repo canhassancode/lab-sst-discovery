@@ -10,6 +10,9 @@ export default $config({
     };
   },
   async run() {
-    new sst.aws.Nextjs("MyWeb");
+    const bucket = new sst.aws.Bucket("LabSSTS3", {
+      public: true,
+    });
+    new sst.aws.Nextjs("LabSSTWeb", { link: [bucket] });
   },
 });
